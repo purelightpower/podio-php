@@ -219,8 +219,8 @@ class Podio
             $request = $request->withBody(new MultipartStream([
             [
               'name' => 'source',
-              'contents' => fopen($options['upload'], 'r'),
-              'filename' => $options['upload']
+              'contents' => fopen($attributes['source']->getFilename(), 'r'),
+              'filename' => $attributes['source']->getFilename()
             ], [
               'name' => 'filename',
               'contents' => $attributes['filename']
