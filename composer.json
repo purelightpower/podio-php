@@ -1,8 +1,8 @@
 {
-  "name": "podio-community/podio-php",
-  "description": "PHP Client for Podio API",
+  "name": "purelightpower/podio-php",
+  "description": "Purelight Power's improvements on the PHP Client for the Podio API.",
   "keywords": ["podio"],
-  "homepage": "https://github.com/podio-community/podio-php",
+  "homepage": "https://github.com/purelightpower/podio-php",
   "license": "MIT",
   "scripts": {
     "test": [
@@ -19,6 +19,14 @@
     {
       "name": "Andreas Haugstrup Pedersen",
       "email": "haugstrup@podio.com"
+    },
+    {
+        "name": "Morgan Billingsley",
+        "email": "morgan.billingsley@purelightpower.com"
+    },
+    {
+        "name": "Brent Kitchen",
+        "email": "brent.kitchen@purelightpower.com"
     }
   ],
   "require": {
