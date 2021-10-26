@@ -35,6 +35,15 @@ class PodioSpaceMember extends PodioObject
     }
 
     /**
+     * @see https://developers.podio.com/doc/space-members/get-space-members-v2-19350328
+     */
+    public static function get_all_v2($space_id, $options = array())
+    {
+        $url = Podio::url_with_options("/space/{$space_id}/member/v2", $options);
+        return self::listing(Podio::get($url));
+    }
+
+    /**
      * @see https://developers.podio.com/doc/space-members/get-space-members-by-role-68043
      */
     public static function get_by_role($space_id, $role)
