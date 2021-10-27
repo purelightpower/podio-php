@@ -39,8 +39,7 @@ class PodioSpaceMember extends PodioObject
      */
     public static function get_all_v2($space_id, $options = array())
     {
-        $url = Podio::url_with_options("/space/{$space_id}/member/v2", $options);
-        return self::listing(Podio::get($url));
+        return self::listing(Podio::get("/space/{$space_id}/member/v2", $options));
     }
 
     /**
