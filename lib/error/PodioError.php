@@ -18,7 +18,7 @@ class PodioError extends Exception
     {
         $str = "";
         if (!empty($this->body['error_description'])) {
-            $str .= $this->body['error_description'].'"';
+            $str .= '"'.$this->body['error_description'].'"';
         }
         $str .= "\nRequest URL: ".$this->request['url'];
         if (!empty($this->request['query_string'])) {
