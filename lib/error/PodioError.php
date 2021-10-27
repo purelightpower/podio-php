@@ -11,10 +11,10 @@ class PodioError extends Exception
         $this->status = $status;
         $this->url = $url;
         $this->request = $this->body['request'];
-        parent::__construct(get_class($this), 1, null);
+        parent::__construct($this->generateMessage(), 1, null);
     }
-
-    public function __toString()
+    
+    protected function generateMessage(): string
     {
         $str = get_class($this);
         if (!empty($this->body['error_description'])) {
@@ -27,8 +27,6 @@ class PodioError extends Exception
         if (!empty($this->request['body'])) {
             $str .= "\nRequest Body: ".json_encode($this->request['body']);
         }
-
-        $str .= "\n\nStack Trace: \n".$this->getTraceAsString();
         return $str;
     }
 }
