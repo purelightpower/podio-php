@@ -16,7 +16,7 @@ class PodioError extends Exception
 
     public function __toString()
     {
-        $str = $str = get_class($this);
+        $str = get_class($this);
         if (!empty($this->body['error_description'])) {
             $str .= ': "'.$this->body['error_description'].'"';
         }
