@@ -16,9 +16,9 @@ class PodioError extends Exception
     
     protected function generateMessage(): string
     {
-        $str = get_class($this);
+        $str = "";
         if (!empty($this->body['error_description'])) {
-            $str .= ': "'.$this->body['error_description'].'"';
+            $str .= $this->body['error_description'].'"';
         }
         $str .= "\nRequest URL: ".$this->request['url'];
         if (!empty($this->request['query_string'])) {
