@@ -124,12 +124,48 @@
             return floatval($field->values);
         }
 
-        public static function getEmailValue(PodioEmailItemField $field): string {
-            return $field->values->value;
+        public static function getEmailValue(PodioEmailItemField $field): string|array {
+            if (count($field->values) > 1) {
+                $emails = [];
+                foreach ($field->values as $value) {
+                    $type = gettype($value);
+                    if ($type === "array") {
+                        $emails[] = $value["value"];
+                    } else if ($type === "object") {
+                        $emails[] = $value->value;
+                    }
+                }
+                return $emails;
+            } else {
+                $type = gettype($field->values[0]);
+                if ($type === "array") {
+                    return $field->values[0]["value"];
+                } else if ($type === "object") {
+                    return $field->values[0]->value;
+                }
+            }
         }
 
         public static function getPhoneValue(PodioPhoneItemField $field): string {
-            return $field->values->value;
+            if (count($field->values) > 1) {
+                $phoneNumbers = [];
+                foreach ($field->values as $value) {
+                    $type = gettype($value);
+                    if ($type === "array") {
+                        $phoneNumbers[] = $value["value"];
+                    } else if ($type === "object") {
+                        $phoneNumbers[] = $value->value;
+                    }
+                }
+                return $phoneNumbers;
+            } else {
+                $type = gettype($field->values[0]);
+                if ($type === "array") {
+                    return $field->values[0]["value"];
+                } else if ($type === "object") {
+                    return $field->values[0]->value;
+                }
+            }
         }
 
         public static function getCategoryValue(PodioCategoryItemField $field): string|array {
