@@ -146,9 +146,9 @@
             return "";
         }
 
-        public static function getDateValue(PodioDateItemField $field): DateTime|DateRange|null {
+        public static function getDateValue(PodioDateItemField $field): DateTime|array|null {
             if ($field->config->settings["end"]) {
-                return new DateRange($field->start, $field->end);
+                return [ "start" => $field->start, "end" => $field->end ];
             } else {
                 return $field->start;
             }
