@@ -134,7 +134,7 @@
 
         public static function getCategoryValue(PodioCategoryItemField $field): string|array {
             if (count($field->values) > 0) {
-                if ($field->config->settings["multiple"]) {
+                if (self::fieldHasMultiple($field)) {
                     $values = [];
                     foreach ($field->values as $option) {
                         array_push($values, $option["text"]);
@@ -147,11 +147,21 @@
         }
 
         public static function getDateValue(PodioDateItemField $field): DateTime|array|null {
-            if ($field->config->settings["end"]) {
+            if (self::dateFieldHasEndDate($field)) {
                 return [ "start" => $field->start, "end" => $field->end ];
             } else {
                 return $field->start;
             }
+        }
+
+        private static function dateFieldHasEndDate(PodioDateItemField $field): bool {
+            $configType = gettype($field->config);
+            if ($configType === "array") {
+                return $field->config["settings"]["end"];
+            } else if ($configType === "object") {
+                return $field->config->settings["end"];
+            }
+            throw new \Exception("The config property in this PodioItemField is not an acceptable type: $configType.");
         }
 
         public static function getAddressValue(PodioLocationItemField $field): string {
@@ -175,11 +185,21 @@
          * @return PodioItem|PodioItem[]
          */
         public static function getRelationshipValue(PodioAppItemField $field): PodioItem|array|null {
-            if ($field->config->settings["multiple"]) {
+            if (self::fieldHasMultiple($field)) {
                 return $field->values->_get_items();
             } else {
                 return $field->values->offsetGet(0);
             }
+        }
+
+        private static function fieldHasMultiple(PodioItemField $field): bool {
+            $configType = gettype($field->config);
+            if ($configType === "array") {
+                return $field->config["settings"]["multiple"];
+            } else if ($configType === "object") {
+                return $field->config->settings["multiple"];
+            }
+            throw new \Exception("The config property in this PodioItemField is not an acceptable type: $configType.");
         }
     }
 
