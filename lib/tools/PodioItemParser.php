@@ -184,7 +184,7 @@
 
         public static function getDateValue(PodioDateItemField $field): DateTime|array|null {
             if (self::dateFieldHasEndDate($field)) {
-                return [ "start" => $field->start, "end" => $field->end ];
+                return $field->values;
             } else {
                 return $field->start;
             }
