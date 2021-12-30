@@ -12,3 +12,4 @@ vendor
 composer.lock
 .php-cs-fixer.cache
 .vscode
+podio.json
