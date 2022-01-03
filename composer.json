@@ -1,6 +1,6 @@
 {
   "name": "purelightpower/podio-php",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Purelight Power's improvements on the PHP Client for the Podio API.",
   "keywords": ["podio"],
   "homepage": "https://github.com/purelightpower/podio-php",
