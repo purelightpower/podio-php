@@ -83,59 +83,59 @@ class PodioItemField extends PodioObject
     public function set_type_from_class_name()
     {
         switch (get_class($this)) {
-      case 'PodioTextItemField':
-        $this->type = 'text';
-        break;
-      case 'PodioEmbedItemField':
-        $this->type = 'embed';
-        break;
-      case 'PodioLocationItemField':
-        $this->type = 'location';
-        break;
-      case 'PodioDateItemField':
-        $this->type = 'date';
-        break;
-      case 'PodioContactItemField':
-        $this->type = 'contact';
-        break;
-      case 'PodioAppItemField':
-        $this->type = 'app';
-        break;
-      case 'PodioCategoryItemField':
-        $this->type = 'category';
-        break;
-      case 'PodioImageItemField':
-        $this->type = 'image';
-        break;
-      case 'PodioFileItemField':
-        $this->type = 'file';
-        break;
-      case 'PodioNumberItemField':
-        $this->type = 'number';
-        break;
-      case 'PodioProgressItemField':
-        $this->type = 'progress';
-        break;
-      case 'PodioDurationItemField':
-        $this->type = 'duration';
-        break;
-      case 'PodioCalculationItemField':
-        $this->type = 'calculation';
-        break;
-      case 'PodioMoneyItemField':
-        $this->type = 'money';
-        break;
-      case 'PodioPhoneItemField':
-        $this->type = 'phone';
-        break;
-      case 'PodioEmailItemField':
-        $this->type = 'email';
-        break;
-      case 'PodioTagItemField':
-        $this->type = 'tag';
-        break;
-      default:
-        break;
-    }
+			case PodioTextItemField::class:
+				$this->type = 'text';
+				break;
+			case PodioEmbedItemField::class:
+				$this->type = 'embed';
+				break;
+			case PodioLocationItemField::class:
+				$this->type = 'location';
+				break;
+			case PodioDateItemField::class:
+				$this->type = 'date';
+				break;
+			case PodioContactItemField::class:
+				$this->type = 'contact';
+				break;
+			case PodioAppItemField::class:
+				$this->type = 'app';
+				break;
+			case PodioCategoryItemField::class:
+				$this->type = 'category';
+				break;
+			case PodioImageItemField::class:
+				$this->type = 'image';
+				break;
+			case PodioFileItemField::class:
+				$this->type = 'file';
+				break;
+			case PodioNumberItemField::class:
+				$this->type = 'number';
+				break;
+			case PodioProgressItemField::class:
+				$this->type = 'progress';
+				break;
+			case PodioDurationItemField::class:
+				$this->type = 'duration';
+				break;
+			case PodioCalculationItemField::class:
+				$this->type = 'calculation';
+				break;
+			case PodioMoneyItemField::class:
+				$this->type = 'money';
+				break;
+			case PodioPhoneItemField::class:
+				$this->type = 'phone';
+				break;
+			case PodioEmailItemField::class:
+				$this->type = 'email';
+				break;
+			case PodioTagItemField::class:
+				$this->type = 'tag';
+				break;
+			default:
+				break;
+      	}
     }
 }
