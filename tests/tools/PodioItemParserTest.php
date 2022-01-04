@@ -62,6 +62,14 @@
                                 "end" => true
                             ]
                         ]
+                    ]),
+                    new PodioMoneyItemField([
+                        "external_id" => "test-price",
+                        "values" => [
+                            "value" => "123.45",
+                            "currency" => "USD"
+                        ],
+                        "label" => "Test Price"
                     ])
                 ])
             ]);
@@ -76,6 +84,7 @@
             $dateRange = $this->parser->getFieldValueByLabel("Test Date");
             $this->assertEquals("2021-12-28 01:00:00", $dateRange["start"]->format("Y-m-d H:i:s"));
             $this->assertEquals("2021-12-29 23:59:59", $dateRange["end"]->format("Y-m-d H:i:s"));
+            $this->assertEquals(123.45, $this->parser->getFieldValueByLabel("Test Price"));
         }
     }
 

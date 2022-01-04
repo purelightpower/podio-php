@@ -205,7 +205,7 @@
         }
 
         public static function getCurrencyValue(PodioMoneyItemField $field): float {
-            return floatval($field->values->amount);
+            return floatval($field->amount);
         }
 
         /**
