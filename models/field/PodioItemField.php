@@ -5,7 +5,7 @@ namespace Podio;
 /**
  * @see https://developers.podio.com/doc/items
  */
-class PodioItemField extends PodioObject
+abstract class PodioItemField extends PodioObject
 {
     public function __construct($attributes = array(), $force_type = null)
     {
@@ -138,4 +138,6 @@ class PodioItemField extends PodioObject
 				break;
       	}
     }
+
+	abstract function getValue(): mixed;
 }
