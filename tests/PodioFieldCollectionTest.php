@@ -20,9 +20,9 @@ class PodioFieldCollectionTest extends TestCase
         parent::setUp();
 
         $this->collection = new PodioFieldCollection([
-            new PodioAppField(['field_id' => 1, 'external_id' => 'a', 'type' => 'text']),
-            new PodioAppField(['field_id' => 2, 'external_id' => 'b', 'type' => 'number']),
-            new PodioAppField(['field_id' => 3, 'external_id' => 'c', 'type' => 'calculation']),
+            new PodioAppField(['field_id' => 1, 'external_id' => 'a', 'type' => 'text', 'label' => 'Field A']),
+            new PodioAppField(['field_id' => 2, 'external_id' => 'b', 'type' => 'number', 'label' => 'Number B']),
+            new PodioAppField(['field_id' => 3, 'external_id' => 'c', 'type' => 'calculation', 'label' => 'Field C']),
         ]);
     }
 
@@ -92,5 +92,26 @@ class PodioFieldCollectionTest extends TestCase
 
         $this->assertInstanceOf(PodioFieldCollection::class, $readonly);
         $this->assertSame(count($readonly), 1);
+    }
+
+    public function testLabelGet(): void {
+        $field = $this->collection->labelGet("Number B");
+        $this->assertSame(2, $field->field_id);
+    }
+
+    public function testGetAllWithLabel(): void {
+        $fields = $this->collection->getAllWithLabel("Number B");
+        $this->assertSame(2, $fields->offsetGet(0)->field_id);
+    }
+
+    public function testRegexLabelGet(): void {
+        $field = $this->collection->regexLabelGet("/^Number B$/");
+        $this->assertSame(2, $field->field_id);
+    }
+
+    public function testGetAllWithRegexLabel(): void {
+        $fields = $this->collection->getAllWithRegexLabel("/^Field \w{1}$/");
+        $this->assertSame(1, $fields->offsetGet(0)->field_id);
+        $this->assertSame(3, $fields->offsetGet(1)->field_id);
     }
 }

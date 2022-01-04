@@ -100,4 +100,44 @@ class PodioFieldCollection extends PodioCollection
         }
         return $fields;
     }
+
+    public function labelGet(string $label): PodioObject {
+        foreach ($this->_get_items() as $field) {
+            if ($field->label === $label) {
+                return $field;
+            }
+        }
+        throw new PodioNotFoundError("{\"error_description\": \"No field with a label $label was found in the collection.\", \"request\":{}}");
+    }
+
+    public function getAllWithLabel(string $label): PodioFieldCollection {
+        $class_name = get_class($this);
+        $fields = new $class_name([]);
+        foreach ($this->_get_items() as $field) {
+            if ($field->label === $label) {
+                $fields->offsetSet(null, $field);
+            }
+        }
+        return $fields;
+    }
+
+    public function regexLabelGet(string $regex): PodioObject {
+        foreach ($this->_get_items() as $field) {
+            if (preg_match($regex, $field->label)) {
+                return $field;
+            }
+        }
+        throw new PodioNotFoundError("{\"error_description\": \"No field in the collection has a label that matches the regex pattern $regex.\", \"request\":{}}");
+    }
+
+    public function getAllWithRegexLabel(string $regex): PodioFieldCollection {
+        $class_name = get_class($this);
+        $fields = new $class_name([]);
+        foreach ($this->_get_items() as $field) {
+            if (preg_match($regex, $field->label)) {
+                $fields->offsetSet(null, $field);
+            }
+        }
+        return $fields;
+    }
 }
