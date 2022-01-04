@@ -136,7 +136,7 @@ class PodioItem extends PodioObject
     public static function filter($app_id, $attributes = array(), $options = array())
     {
         $url = Podio::url_with_options("/item/app/{$app_id}/filter/", $options);
-        return self::collection(Podio::post($url, $attributes ? $attributes : new StdClass()), "PodioItemCollection");
+        return self::collection(Podio::post($url, $attributes ? $attributes : new StdClass()), PodioItemCollection::class);
     }
 
     /**
@@ -145,7 +145,7 @@ class PodioItem extends PodioObject
     public static function filter_by_view($app_id, $view_id, $attributes = array(), $options = array())
     {
         $url = Podio::url_with_options("/item/app/{$app_id}/filter/{$view_id}/", $options);
-        return self::collection(Podio::post($url, $attributes ? $attributes : new StdClass()), "PodioItemCollection");
+        return self::collection(Podio::post($url, $attributes ? $attributes : new StdClass()), PodioItemCollection::class);
     }
 
     /**
