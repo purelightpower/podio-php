@@ -3,9 +3,9 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioAssetItemField;
-use PodioCollection;
-use PodioFile;
+use Podio\PodioAssetItemField;
+use Podio\PodioCollection;
+use Podio\PodioFile;
 
 class PodioAssetItemFieldTest extends TestCase
 {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Image field
  */

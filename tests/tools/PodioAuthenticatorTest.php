@@ -1,7 +1,8 @@
 <?php
 
     use PHPUnit\Framework\TestCase;
-    use PodioAuthenticator;
+    use Podio\Podio;
+    use Podio\Tools\PodioAuthenticator;
 
     class PodioAuthenticatorTest extends TestCase {
         public function testAuthenticate(): void {

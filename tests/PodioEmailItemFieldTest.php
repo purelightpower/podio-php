@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioEmailItemField;
+use Podio\PodioEmailItemField;
 
 class PodioEmailItemFieldTest extends TestCase
 {

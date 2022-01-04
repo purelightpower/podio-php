@@ -5,7 +5,7 @@ namespace Podio\Tests;
 use DateTime;
 use DateTimeZone;
 use PHPUnit\Framework\TestCase;
-use PodioDateItemField;
+use Podio\PodioDateItemField;
 
 class PodioDateItemFieldTest extends TestCase
 {

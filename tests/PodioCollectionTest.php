@@ -3,9 +3,10 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioCollection;
-use PodioItem;
-use PodioObject;
+use Podio\PodioCollection;
+use Podio\PodioItem;
+use Podio\PodioObject;
+use Podio\PodioDataIntegrityError;
 
 class PodioCollectionTest extends TestCase
 {
@@ -61,7 +62,7 @@ class PodioCollectionTest extends TestCase
 
     public function test_cannot_add_string(): void
     {
-        $this->expectException('PodioDataIntegrityError');
+        $this->expectException(PodioDataIntegrityError::class);
         $this->collection[] = 'Sample String';
     }
 

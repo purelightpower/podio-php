@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioProgressItemField;
+use Podio\PodioProgressItemField;
 
 class PodioProgressItemFieldTest extends TestCase
 {

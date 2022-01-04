@@ -3,12 +3,13 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioAppField;
-use PodioCalculationItemField;
-use PodioItemField;
-use PodioItemFieldCollection;
-use PodioNumberItemField;
-use PodioTextItemField;
+use Podio\PodioAppField;
+use Podio\PodioCalculationItemField;
+use Podio\PodioItemField;
+use Podio\PodioItemFieldCollection;
+use Podio\PodioNumberItemField;
+use Podio\PodioTextItemField;
+use Podio\PodioDataIntegrityError;
 
 class PodioItemFieldCollectionTest extends TestCase
 {
@@ -84,7 +85,7 @@ class PodioItemFieldCollectionTest extends TestCase
 
     public function test_cannot_add_app_field(): void
     {
-        $this->expectException('PodioDataIntegrityError');
+        $this->expectException(PodioDataIntegrityError::class);
         $this->collection[] = new PodioAppField();
     }
 }

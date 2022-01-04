@@ -3,9 +3,9 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioCollection;
-use PodioContact;
-use PodioContactItemField;
+use Podio\PodioCollection;
+use Podio\PodioContact;
+use Podio\PodioContactItemField;
 
 class PodioContactItemFieldTest extends TestCase
 {

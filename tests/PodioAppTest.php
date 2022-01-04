@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioApp;
+use Podio\PodioApp;
 
 class PodioAppTest extends TestCase
 {

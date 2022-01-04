@@ -3,9 +3,10 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioAppField;
-use PodioFieldCollection;
-use PodioObject;
+use Podio\PodioAppField;
+use Podio\PodioFieldCollection;
+use Podio\PodioObject;
+use Podio\PodioDataIntegrityError;
 
 class PodioFieldCollectionTest extends TestCase
 {
@@ -53,7 +54,7 @@ class PodioFieldCollectionTest extends TestCase
 
     public function test_cannot_add_object(): void
     {
-        $this->expectException('PodioDataIntegrityError');
+        $this->expectException(PodioDataIntegrityError::class);
         $this->collection[] = new PodioObject();
     }
 

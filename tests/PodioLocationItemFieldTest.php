@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioLocationItemField;
+use Podio\PodioLocationItemField;
 
 class PodioLocationItemFieldTest extends TestCase
 {

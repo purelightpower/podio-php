@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioMoneyItemField;
+use Podio\PodioMoneyItemField;
 
 class PodioMoneyItemFieldTest extends TestCase
 {

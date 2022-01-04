@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Collection for managing a list of PodioAppField objects.
  */
@@ -29,7 +31,7 @@ class PodioAppFieldCollection extends PodioFieldCollection
      */
     public function offsetSet($offset, $field)
     {
-        if (!is_a($field, 'PodioAppField')) {
+        if (!is_a($field, PodioAppField::class)) {
             throw new PodioDataIntegrityError("Objects in PodioAppFieldCollection must be of class PodioAppField");
         }
 

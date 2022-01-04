@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
@@ -72,7 +74,7 @@ class Podio
         }
 
         // Register shutdown function for debugging and session management
-        register_shutdown_function('Podio::shutdown');
+        register_shutdown_function(Podio::class.'::shutdown');
     }
 
     public static function authenticate_with_app($app_id, $app_token)
@@ -229,18 +231,18 @@ class Podio
         } elseif (empty($options['oauth_request'])) {
             // application/json
             $encoded_attributes = json_encode($attributes);
-            $request = $request->withBody(GuzzleHttp\Psr7\Utils::streamFor($encoded_attributes));
+            $request = $request->withBody(\GuzzleHttp\Psr7\Utils::streamFor($encoded_attributes));
             $request = $request->withHeader('Content-type', 'application/json');
         } else {
             // x-www-form-urlencoded
             $encoded_attributes = static::encode_attributes($attributes);
-            $request = $request->withBody(GuzzleHttp\Psr7\Utils::streamFor($encoded_attributes));
+            $request = $request->withBody(\GuzzleHttp\Psr7\Utils::streamFor($encoded_attributes));
             $request = $request->withHeader('Content-type', 'application/x-www-form-urlencoded');
         }
         break;
       case self::PUT:
         $encoded_attributes = json_encode($attributes);
-        $request = $request->withBody(GuzzleHttp\Psr7\Utils::streamFor($encoded_attributes));
+        $request = $request->withBody(\GuzzleHttp\Psr7\Utils::streamFor($encoded_attributes));
         $request = $request->withHeader('Content-type', 'application/json');
         break;
     }

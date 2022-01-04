@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 class PodioByLine extends PodioObject
 {
     public function __construct($attributes = array())

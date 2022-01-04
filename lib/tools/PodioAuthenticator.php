@@ -1,5 +1,9 @@
 <?php
 
+    namespace Podio\Tools;
+
+    use Podio\Podio;
+
     class PodioAuthenticator {
         const USER_TYPE = "user";
         const APP_TYPE = "app";

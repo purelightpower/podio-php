@@ -41,7 +41,7 @@
     "composer/ca-bundle": "Improve security through providing current CA ROOT certificates bundle"
   },
   "autoload": {
-    "classmap": ["lib/", "lib/error/", "models/", "models/field/"]
+    "classmap": ["lib/", "lib/error/", "lib/tools/", "models/", "models/field/"]
   },
   "autoload-dev": {
     "psr-4": {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Location field
  */

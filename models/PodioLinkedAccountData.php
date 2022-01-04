@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 class PodioLinkedAccountData extends PodioObject
 {
     public function __construct($attributes = array())

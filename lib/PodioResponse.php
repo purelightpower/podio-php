@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 class PodioResponse
 {
     public $body;

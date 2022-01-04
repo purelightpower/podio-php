@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * App reference field
  */
@@ -50,7 +52,7 @@ class PodioAppItemField extends PodioItemField
     {
         if ($values) {
             // Ensure that we have an array of values
-            if (is_a($values, 'PodioCollection')) {
+            if (is_a($values, PodioCollection::class)) {
                 $values = $values->_get_items();
             }
             if (is_object($values) || (is_array($values) && !empty($values['item_id']))) {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 class PodioOAuth
 {
     public $access_token;

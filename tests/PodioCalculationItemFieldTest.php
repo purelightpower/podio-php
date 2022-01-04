@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioCalculationItemField;
+use Podio\PodioCalculationItemField;
 
 class PodioCalculationItemFieldTest extends TestCase
 {

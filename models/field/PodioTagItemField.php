@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Tag Field. Undocumented by Podio, but occurs as unremovable default field "Organization" in contact apps.
  */

@@ -3,7 +3,8 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioCategoryItemField;
+use Podio\PodioCategoryItemField;
+use Podio\PodioDataIntegrityError;
 
 class PodioCategoryItemFieldTest extends TestCase
 {

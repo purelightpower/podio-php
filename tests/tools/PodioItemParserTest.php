@@ -1,15 +1,16 @@
 <?php
 
     use PHPUnit\Framework\TestCase;
-    use PodioItem;
-    use PodioApp;
-    use PodioItemFieldCollection;
-    use PodioTextItemField;
-    use PodioNumberItemField;
-    use PodioCategoryItemField;
-    use PodioEmailItemField;
-    use PodioDateItemField;
-    use PodioItemParser;
+    use Podio\PodioItem;
+    use Podio\PodioApp;
+    use Podio\PodioItemFieldCollection;
+    use Podio\PodioTextItemField;
+    use Podio\PodioNumberItemField;
+    use Podio\PodioCategoryItemField;
+    use Podio\PodioEmailItemField;
+    use Podio\PodioDateItemField;
+    use Podio\PodioMoneyItemField;
+    use Podio\Tools\PodioItemParser;
 
     class PodioItemParserTest extends TestCase {
         private PodioItemParser $parser;

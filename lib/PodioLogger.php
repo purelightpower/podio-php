@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Handles logging of errors and debug information to file system
  */

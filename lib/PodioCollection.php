@@ -1,5 +1,12 @@
 <?php
 
+namespace Podio;
+
+use IteratorAggregate;
+use ArrayAccess;
+use Countable;
+use ArrayIterator;
+
 /**
  * Provides a very simple iterator and array access interface to a collection
  * of PodioObject models.
@@ -54,7 +61,7 @@ class PodioCollection implements IteratorAggregate, ArrayAccess, Countable
      */
     public function offsetSet($offset, $value)
     {
-        if (!is_a($value, 'PodioObject')) {
+        if (!is_a($value, PodioObject::class)) {
             throw new PodioDataIntegrityError("Objects in PodioCollection must be of class PodioObject");
         }
 

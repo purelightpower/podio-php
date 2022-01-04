@@ -5,8 +5,8 @@ namespace Podio\Tests;
 use DateTime;
 use DateTimeZone;
 use PHPUnit\Framework\TestCase;
-use PodioCollection;
-use PodioObject;
+use Podio\PodioCollection;
+use Podio\PodioObject;
 
 class PodioObjectTest extends TestCase
 {

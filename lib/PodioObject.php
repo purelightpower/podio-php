@@ -1,5 +1,10 @@
 <?php
 
+namespace Podio;
+
+use DateTime;
+use DateTimeZone;
+
 class PodioObject
 {
     private $__attributes = array();
@@ -46,7 +51,7 @@ class PodioObject
             foreach ($this->__relationships as $name => $type) {
                 if (array_key_exists($name, $default_attributes)) {
                     $property = $this->__properties[$name];
-                    $class_name = 'Podio'.$property['type'];
+                    $class_name = __NAMESPACE__ . '\Podio'.$property['type'];
 
                     if ($type == 'has_one') {
                         $child = is_object($default_attributes[$name]) ? $default_attributes[$name] : new $class_name($default_attributes[$name]);
@@ -56,19 +61,19 @@ class PodioObject
 
             // Special handling for ItemField and AppField.
                         // We need to create collection of the right type
-                        if ($class_name == 'PodioItemField') {
-                            $collection_class = 'PodioItemFieldCollection';
+                        if ($class_name == PodioItemField::class) {
+                            $collection_class = PodioItemFieldCollection::class;
                             $values = $default_attributes[$name];
 
                             // Make sure we pass along info on whether the values property
                             // contains API style values or not
                             $collection = new $collection_class($values, $has_api_values);
-                        } elseif ($class_name == 'PodioAppField') {
-                            $collection_class = 'PodioAppFieldCollection';
+                        } elseif ($class_name == PodioAppField::class) {
+                            $collection_class = PodioAppFieldCollection::class;
                             $values = $default_attributes[$name];
                             $collection = new $collection_class($values);
                         } else {
-                            $collection_class = 'PodioCollection';
+                            $collection_class = PodioCollection::class;
                             $values = array();
                             foreach ($default_attributes[$name] as $value) {
                                 $child = is_object($value) ? $value : new $class_name($value);
@@ -157,7 +162,7 @@ class PodioObject
           break;
         case 'datetime':
         case 'date':
-          if (is_a($value, 'DateTime')) {
+          if (is_a($value, DateTime::class)) {
               $this->__attributes[$name] = $value->format($this->date_format_for_property($name));
           } else {
               $this->__attributes[$name] = $value;

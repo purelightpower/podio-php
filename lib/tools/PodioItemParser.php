@@ -1,5 +1,20 @@
 <?php
 
+    namespace Podio\Tools;
+
+    use Exception;
+    use Podio\PodioItem;
+    use Podio\PodioItemField;
+    use Podio\PodioTextItemField;
+    use Podio\PodioEmailItemField;
+    use Podio\PodioPhoneItemField;
+    use Podio\PodioCategoryItemField;
+    use Podio\PodioDateItemField;
+    use Podio\PodioLocationItemField;
+    use Podio\PodioMoneyItemField;
+    use Podio\PodioContactItemField;
+    use Podio\PodioAppItemField;
+
     class PodioItemParser {
         const TEXT_TYPE = "text";
         const NUMBER_TYPE = "number";

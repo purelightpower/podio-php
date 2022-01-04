@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioPhoneItemField;
+use Podio\PodioPhoneItemField;
 
 class PodioPhoneItemFieldTest extends TestCase
 {

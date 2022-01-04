@@ -3,10 +3,10 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioCollection;
-use PodioEmbed;
-use PodioEmbedItemField;
-use PodioFile;
+use Podio\PodioCollection;
+use Podio\PodioEmbed;
+use Podio\PodioEmbedItemField;
+use Podio\PodioFile;
 
 class PodioEmbedItemFieldTest extends TestCase
 {

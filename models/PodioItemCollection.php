@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 class PodioItemCollection extends PodioCollection
 {
     public $filtered;
@@ -21,7 +23,7 @@ class PodioItemCollection extends PodioCollection
     // Array access
     public function offsetSet($offset, $value)
     {
-        if (!is_a($value, 'PodioItem')) {
+        if (!is_a($value, PodioItem::class)) {
             throw new PodioDataIntegrityError("Objects in PodioItemCollection must be of class PodioItem");
         }
         parent::offsetSet($offset, $value);

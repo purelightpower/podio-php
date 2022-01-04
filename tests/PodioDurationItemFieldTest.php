@@ -3,7 +3,7 @@
 namespace Podio\Tests;
 
 use PHPUnit\Framework\TestCase;
-use PodioDurationItemField;
+use Podio\PodioDurationItemField;
 
 class PodioDurationItemFieldTest extends TestCase
 {

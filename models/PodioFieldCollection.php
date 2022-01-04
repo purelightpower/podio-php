@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * A collection for managing a list of PodioAppFields or PodioItemFields.
  * Don't instantiate this class manually. Use PodioAppFieldCollection or

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * File field
  */

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * phone ore email field
  */

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Progress field
  */

@@ -1,5 +1,7 @@
 <?php
 
+namespace Podio;
+
 /**
  * Collection for managing a list of PodioItemField objects.
  */
@@ -14,15 +16,15 @@ class PodioItemFieldCollection extends PodioFieldCollection
 
     // Make default array into array of proper objects
         $fields = array();
-        $class_name = 'PodioItemField';
+        $class_name = PodioItemField::class;
 
         foreach ($attributes as $field_attributes) {
             $old_class_name = $class_name;
 
             if (!is_object($field_attributes)) {
-                $class_name_alternate = 'Podio'.ucfirst($field_attributes['type']).'ItemField';
+                $class_name_alternate = __NAMESPACE__ . '\Podio'.ucfirst($field_attributes['type']).'ItemField';
                 if (class_exists($class_name_alternate)) {
-                    $old_class_name = 'PodioItemField';
+                    $old_class_name = PodioItemField::class;
                     $class_name = $class_name_alternate;
                 }
             }
@@ -42,7 +44,7 @@ class PodioItemFieldCollection extends PodioFieldCollection
      */
     public function offsetSet($offset, $field)
     {
-        if (!is_a($field, 'PodioItemField')) {
+        if (!is_a($field, PodioItemField::class)) {
             throw new PodioDataIntegrityError("Objects in PodioItemFieldCollection must be of class PodioItemField");
         }
 

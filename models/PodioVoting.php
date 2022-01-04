@@ -1,4 +1,7 @@
 <?php
+
+namespace Podio;
+
 /**
  * @see https://developers.podio.com/doc/voting
  */

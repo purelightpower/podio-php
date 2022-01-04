@@ -1,5 +1,9 @@
 <?php
 
+namespace Podio;
+
+use Exception;
+
 class PodioError extends Exception
 {
     public $body;
