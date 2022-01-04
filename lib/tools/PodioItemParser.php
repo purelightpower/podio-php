@@ -7,7 +7,7 @@
         const PHONE_TYPE = "phone";
         const CATEGORY_TYPE = "category";
         const DATE_TYPE = "date";
-        const CURRENCY_TYPE = "currency";
+        const CURRENCY_TYPE = "money";
         const CONTACT_TYPE = "contact";
         const RELATIONSHIP_TYPE = "app";
         const ADDRESS_TYPE = "location";
