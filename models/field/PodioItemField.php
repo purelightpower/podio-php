@@ -2,6 +2,9 @@
 
 namespace Podio;
 
+use OutOfBoundsException;
+use UnexpectedValueException;
+
 /**
  * @see https://developers.podio.com/doc/items
  */
@@ -138,6 +141,58 @@ abstract class PodioItemField extends PodioObject
 				break;
       	}
     }
+
+    public function hasMultiple(): bool {
+        try {
+			$hasMultiple = $this->getConfigProperty("settings.multiple");
+			$type = gettype($hasMultiple);
+			if ($type === "boolean") {
+				return $hasMultiple;
+			} else {
+				throw new UnexpectedValueException("The config.settings.multiple property for the field is supposed to be a boolean value. A $type type was returned.");
+			}
+		} catch (OutOfBoundsException) {
+			return false;
+		} catch (UnexpectedValueException $error) {
+			throw new PodioDataIntegrityError("\"error_description\": \"{$error->getMessage()}\", \"response\": {}");
+		}
+    }
+
+	protected function getConfigProperty(string $key): mixed {
+		$properties = explode(".", $key);
+		$currentKey = "config";
+		$currentLevel = $this->__get("config");
+		foreach ($properties as $property) {
+			$levelType = gettype($currentLevel);
+			if ($levelType === "array") {
+				if (array_key_exists($property, $currentLevel)) {
+					$currentLevel = $currentLevel[$property];
+				} else {
+					throw new OutOfBoundsException("There is no config property named $key for this field.");
+				}
+			} else if ($levelType === "object") {
+				if (property_exists($currentLevel, $property)) {
+					$currentLevel = $currentLevel->{$property};
+				} else {
+					throw new OutOfBoundsException("There is no config property named $key for this field.");
+				}
+			} else {
+				throw new UnexpectedValueException("The $currentKey property for the field is supposed to be an object or an array. Instead a $levelType was provided.");
+			}
+			$currentKey .= ".$property";
+		}
+		return $currentLevel;
+	}
+
+	protected function configIsArray(): bool {
+		$type = gettype($this->__get("config"));
+		return $type === "array";
+	}
+
+	protected function configIsObject(): bool {
+		$type = gettype($this->__get("config"));
+		return $type === "object";
+	}
 
 	abstract function getValue(): mixed;
 }
