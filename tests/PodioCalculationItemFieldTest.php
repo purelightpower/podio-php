@@ -97,4 +97,10 @@ class PodioCalculationItemFieldTest extends TestCase
         $date_value_json = '{"start":"2016-11-11 00:00:00","start_date_utc":"2016-11-11","start_time_utc":"00:00:00",'.'"start_time":"00:00:00","start_utc":"2016-11-11 00:00:00","start_date":"2016-11-11"}';
         $this->assertSame(''.$date_value_json.'', $this->date_value->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals(1234.5600, $this->object->getValue());
+        $this->assertEquals(0, $this->zero_value->getValue());
+        $this->assertEquals("2016-11-11 00:00:00", $this->date_value->getValue()->format("Y-m-d H:i:s"));
+    }
 }

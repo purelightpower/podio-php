@@ -2,6 +2,9 @@
 
 namespace Podio;
 
+use DateTime;
+use Podio\FieldTools\CalculationFieldRawValueConverter;
+
 /**
  * Calculation field
  */
@@ -46,5 +49,10 @@ class PodioCalculationItemField extends PodioItemField
     public function api_friendly_values()
     {
         return $this->values !== null ? $this->values : null;
+    }
+
+    public function getValue(): mixed {
+        $converter = new CalculationFieldRawValueConverter($this->values);
+        return $converter->getValue();
     }
 }
