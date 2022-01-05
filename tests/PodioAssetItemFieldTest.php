@@ -121,4 +121,18 @@ class PodioAssetItemFieldTest extends TestCase
         // Populated values
         $this->assertSame('[1,2,3]', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->object->values = [
+            ['file_id' => 4, 'name' => 'philosoraptor.jpg'],
+            ['file_id' => 5, 'name' => 'nyancat.jpg'],
+        ];
+        $value = $this->object->getValue();
+        $this->assertInstanceOf(PodioFile::class, $value[0]);
+        $this->assertEquals(4, $value[0]->file_id);
+        $this->assertEquals("philosoraptor.jpg", $value[0]->name);
+        $this->assertInstanceOf(PodioFile::class, $value[1]);
+        $this->assertEquals(5, $value[1]->file_id);
+        $this->assertEquals("nyancat.jpg", $value[1]->name);
+    }
 }
