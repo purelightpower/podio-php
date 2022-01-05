@@ -5,6 +5,7 @@ namespace Podio\Tests;
 use PHPUnit\Framework\TestCase;
 use Podio\PodioAppItemField;
 use Podio\PodioCollection;
+use Podio\PodioItemCollection;
 use Podio\PodioItem;
 
 class PodioAppItemFieldTest extends TestCase
@@ -24,7 +25,7 @@ class PodioAppItemFieldTest extends TestCase
                 ['value' => ['item_id' => 1, 'title' => 'Snap']],
                 ['value' => ['item_id' => 2, 'title' => 'Crackle']],
                 ['value' => ['item_id' => 3, 'title' => 'Pop']],
-            ],
+            ]
         ]);
     }
 
@@ -120,5 +121,36 @@ class PodioAppItemFieldTest extends TestCase
 
         // Populated values
         $this->assertSame('[1,2,3]', $this->object->as_json());
+    }
+
+    public function testGetValue(): void {
+        $this->object->config = [
+            'settings' => [
+                'multiple' => true
+            ]
+        ];
+        $this->object->values = [
+            new PodioItem(['item_id' => 4, 'title' => 'Captain Crunch']),
+            new PodioItem(['item_id' => 5, 'title' => 'Count Chocula']),
+        ];
+        $value = $this->object->getValue();
+        $this->assertInstanceOf(PodioItemCollection::class, $value);
+        $this->assertEquals(4, $value->offsetGet(0)->item_id);
+        $this->assertEquals("Captain Crunch", $value->offsetGet(0)->title);
+        $this->assertEquals(5, $value->offsetGet(1)->item_id);
+        $this->assertEquals("Count Chocula", $value->offsetGet(1)->title);
+    }
+
+    public function testGetValueWithSingle(): void {
+        $this->object->config = [
+            'settings' => [
+                'multiple' => false
+            ]
+        ];
+        $this->object->values = new PodioItem(['item_id' => 4, 'title' => 'Captain Crunch']);
+        $value = $this->object->getValue();
+        $this->assertInstanceOf(PodioItem::class, $value);
+        $this->assertEquals(4, $value->item_id);
+        $this->assertEquals("Captain Crunch", $value->title);
     }
 }

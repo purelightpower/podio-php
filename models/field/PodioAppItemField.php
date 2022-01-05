@@ -26,7 +26,7 @@ class PodioAppItemField extends PodioItemField
         $attribute = parent::__get($name);
         if ($name == 'values' && $attribute) {
             // Create PodioCollection from raw values
-            $collection = new PodioCollection();
+            $collection = new PodioItemCollection([]);
             foreach ($attribute as $value) {
                 $collection[] = new PodioItem($value['value']);
             }
@@ -80,5 +80,16 @@ class PodioAppItemField extends PodioItemField
             $list[] = $value->item_id;
         }
         return $list;
+    }
+
+    public function getValue(): PodioItem|PodioItemCollection {
+        $total = $this->values->count();
+        if ($this->hasMultiple() && $total > 1) {
+            return new PodioItemCollection($this->values->_get_items());
+        } else if ($total > 0) {
+            return $this->values->offsetGet(0);
+        } else {
+            return new PodioItemCollection([]);
+        }
     }
 }
