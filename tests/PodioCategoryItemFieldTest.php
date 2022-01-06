@@ -25,6 +25,11 @@ class PodioCategoryItemFieldTest extends TestCase
                 ['value' => ['id' => 2, 'text' => 'Crackle']],
                 ['value' => ['id' => 3, 'text' => 'Pop']],
             ],
+            "config" => [
+                "settings" => [
+                    "multiple" => true
+                ]
+            ]
         ]);
     }
 
@@ -116,5 +121,21 @@ class PodioCategoryItemFieldTest extends TestCase
 
         // Populated values
         $this->assertSame('[1,2,3]', $this->object->as_json());
+    }
+
+    public function testGetValue(): void {
+        $this->assertEquals(['Snap', 'Crackle', 'Pop'], $this->object->getValue());
+    }
+
+    public function testGetSingularValue(): void {
+        $this->object->values = [
+            ["value" => ["id" => 1, "text" => "Snap"]]
+        ];
+        $this->object->config = [
+            "settings" => [
+                "multiple" => false
+            ]
+        ];
+        $this->assertEquals("Snap", $this->object->getValue());
     }
 }

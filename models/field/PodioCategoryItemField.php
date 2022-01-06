@@ -82,9 +82,22 @@ class PodioCategoryItemField extends PodioItemField
         }
         $list = array();
         foreach ($this->values as $value) {
+            $value = isset($value["value"]) ? $value["value"] : $value;
             $list[] = isset($value['text']) ? $value['text'] : $value['id'];
         }
 
         return join(';', $list);
+    }
+
+    /**
+     * @return string|string[]
+     */
+    public function getValue(): string|array {
+        $values = explode(";", $this->humanized_value());
+        if (count($values) !== 1) {
+            return $values;
+        } else {
+            return $values[0];
+        }
     }
 }
