@@ -126,4 +126,24 @@ class PodioContactItemFieldTest extends TestCase
         // Populated values
         $this->assertSame('[1,2,3]', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $value = $this->object->getValue();
+        $this->assertEquals(1, $value->offsetGet(0)->profile_id);
+        $this->assertEquals("Snap", $value->offsetGet(0)->name);
+        $this->assertEquals(2, $value->offsetGet(1)->profile_id);
+        $this->assertEquals("Crackle", $value->offsetGet(1)->name);
+        $this->assertEquals(3, $value->offsetGet(2)->profile_id);
+        $this->assertEquals("Pop", $value->offsetGet(2)->name);
+    }
+
+    public function testGetValueWithSingle(): void {
+        $object =  new PodioContactItemField([
+            'field_id' => 123,
+            'values' => ['profile_id' => 4, 'name' => 'Captain Crunch'],
+        ]);
+        $value = $object->getValue();
+        $this->assertEquals(4, $value->profile_id);
+        $this->assertEquals("Captain Crunch", $value->name);
+    }
 }
