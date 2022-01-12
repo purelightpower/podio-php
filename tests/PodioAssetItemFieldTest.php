@@ -135,4 +135,14 @@ class PodioAssetItemFieldTest extends TestCase
         $this->assertEquals(5, $value[1]->file_id);
         $this->assertEquals("nyancat.jpg", $value[1]->name);
     }
+
+    public function testGetSingularValue(): void {
+        $this->object->values = [
+            ['file_id' => 5, 'name' => 'nyancat.jpg']
+        ];
+        $value = $this->object->getValue();
+        $this->assertInstanceOf(PodioFile::class, $value);
+        $this->assertEquals(5, $value->file_id);
+        $this->assertEquals("nyancat.jpg", $value->name);
+    }
 }

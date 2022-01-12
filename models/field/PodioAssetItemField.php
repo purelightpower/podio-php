@@ -84,7 +84,11 @@ class PodioAssetItemField extends PodioItemField
         return $list;
     }
 
-    public function getValue(): PodioCollection {
-        return $this->__get("values");
+    public function getValue(): PodioCollection|PodioFile {
+        $values = $this->values;
+        if (count($values) !== 1) {
+            return $values;
+        }
+        return $values->offsetGet(0);
     }
 }
