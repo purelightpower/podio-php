@@ -715,4 +715,15 @@ class PodioDateItemFieldTest extends TestCase
         $this->assertSame('{"start_utc":"2011-05-31 14:00:00","end_date":"2011-06-08"}', $this->start_datetime_end_date->as_json());
         $this->assertSame('{"start_utc":"2011-05-31 14:00:00","end_utc":"2011-06-08 14:00:00"}', $this->start_datetime_end_datetime->as_json());
     }
+
+    public function testGetValueWithStartOnly(): void {
+        $date = $this->start_date_omitted_end->getValue();
+        $this->assertEquals("2011-05-31", $date->format("Y-m-d"));
+    }
+
+    public function testGetValueWithDatetimeStartAndEnd(): void {
+        $dates = $this->start_datetime_end_datetime->getValue();
+        $this->assertEquals("2011-05-31 14:00:00", $dates["start"]->format("Y-m-d H:i:s"));
+        $this->assertEquals("2011-06-08 14:00:00", $dates["end"]->format("Y-m-d H:i:s"));
+    }
 }

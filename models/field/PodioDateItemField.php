@@ -4,6 +4,7 @@ namespace Podio;
 
 use DateTime;
 use DateTimeZone;
+use Podio\FieldTools\DateValueParser;
 
 /**
  * Date field
@@ -289,5 +290,10 @@ class PodioDateItemField extends PodioItemField
         }
 
         return $result;
+    }
+
+    public function getValue(): DateTime|array|null {
+        $parser = new DateValueParser((array) $this->values);
+        return $parser->getValue();
     }
 }

@@ -96,7 +96,7 @@
             $allKeys = array_keys($this->values);
             $endKeys = ["end", "end_date", "end_utc", "end_date_utc"];
             foreach ($endKeys as $endKey) {
-                if (in_array($endKey, $allKeys)) {
+                if (in_array($endKey, $allKeys) && !empty($this->values[$endKey])) {
                     return true;
                 }
             }
