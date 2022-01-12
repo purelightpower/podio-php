@@ -79,4 +79,8 @@ class PodioMoneyItemField extends PodioItemField
     {
         return $this->values ? $this->values : null;
     }
+
+    public function getValue(): float {
+        return floatval($this->amount);
+    }
 }

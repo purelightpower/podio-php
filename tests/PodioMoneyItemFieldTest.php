@@ -123,4 +123,8 @@ class PodioMoneyItemFieldTest extends TestCase
         $this->assertSame('{"value":"123.5568","currency":"USD"}', $this->object->as_json());
         $this->assertSame('{"value":"0","currency":"USD"}', $this->zero_value->as_json());
     }
+
+    public function getValue(): void {
+        $this->assertEquals(123.5568, $this->object->getValue());
+    }
 }
