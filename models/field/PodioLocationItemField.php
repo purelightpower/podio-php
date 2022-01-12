@@ -56,4 +56,8 @@ class PodioLocationItemField extends PodioItemField
         }
         return $this->text;
     }
+
+    public function getValue(): string {
+        return $this->text;
+    }
 }

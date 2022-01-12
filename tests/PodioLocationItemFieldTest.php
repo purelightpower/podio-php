@@ -115,4 +115,8 @@ class PodioLocationItemFieldTest extends TestCase
         // Populated values
         $this->assertSame('{"value":"650 Townsend St., San Francisco, CA 94103","lat":37.7710325,"lng":-122.4033069}', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals("650 Townsend St., San Francisco, CA 94103", $this->object->getValue());
+    }
 }
