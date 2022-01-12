@@ -79,4 +79,8 @@ class PodioNumberItemFieldTest extends TestCase
         $this->assertSame('"1234.5600"', $this->object->as_json());
         $this->assertSame('"0"', $this->zero_value->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals(1234.56, $this->object->getValue());
+    }
 }

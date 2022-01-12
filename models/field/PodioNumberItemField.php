@@ -47,4 +47,8 @@ class PodioNumberItemField extends PodioItemField
     {
         return $this->values !== null ? $this->values : null;
     }
+
+    public function getValue(): float {
+        return floatval($this->values);
+    }
 }
