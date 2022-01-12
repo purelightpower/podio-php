@@ -79,4 +79,8 @@ class PodioProgressItemFieldTest extends TestCase
         $this->assertSame('55', $this->object->as_json());
         $this->assertSame('0', $this->zero_value->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals(55, $this->object->getValue());
+    }
 }
