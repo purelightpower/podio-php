@@ -44,4 +44,8 @@ class PodioTextItemField extends PodioItemField
     {
         return $this->values ? $this->values : null;
     }
+
+    public function getValue(): string {
+        return $this->values;
+    }
 }

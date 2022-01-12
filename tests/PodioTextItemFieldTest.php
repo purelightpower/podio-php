@@ -71,4 +71,8 @@ class PodioTextItemFieldTest extends TestCase
         $this->assertSame('null', $this->empty_values->as_json());
         $this->assertSame('"FooBar"', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals("FooBar", $this->object->getValue());
+    }
 }
