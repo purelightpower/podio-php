@@ -142,6 +142,22 @@ abstract class PodioItemField extends PodioObject
       	}
     }
 
+	public static function fromAttributes(array $attributes, $force_type = null): PodioItemField {
+		$className = PodioTextItemField::class;
+		if (array_key_exists("type", $attributes)) {
+			$className = self::getClassNameFromType($attributes["type"]);
+		}
+		return new $className($attributes);
+	}
+
+	private static function getClassNameFromType(string $type): string {
+		$className = __NAMESPACE__ . "\\Podio" . ucfirst($type) . "ItemField";
+		if (class_exists($className)) {
+			return $className;
+		}
+		throw new UnexpectedValueException("The provided type $type is not valid.");
+	}
+
     public function hasMultiple(): bool {
         try {
 			$hasMultiple = $this->getConfigProperty("settings.multiple");

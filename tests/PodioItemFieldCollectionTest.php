@@ -10,6 +10,7 @@ use Podio\PodioItemFieldCollection;
 use Podio\PodioNumberItemField;
 use Podio\PodioTextItemField;
 use Podio\PodioDataIntegrityError;
+use UnexpectedValueException;
 
 class PodioItemFieldCollectionTest extends TestCase
 {
@@ -23,9 +24,9 @@ class PodioItemFieldCollectionTest extends TestCase
         parent::setUp();
 
         $this->collection = new PodioItemFieldCollection([
-            new PodioItemField(['field_id' => 1, 'external_id' => 'a', 'type' => 'text']),
-            new PodioItemField(['field_id' => 2, 'external_id' => 'b', 'type' => 'number']),
-            new PodioItemField(['field_id' => 3, 'external_id' => 'c', 'type' => 'calculation']),
+            PodioItemField::fromAttributes(['field_id' => 1, 'external_id' => 'a', 'type' => 'text']),
+            PodioItemField::fromAttributes(['field_id' => 2, 'external_id' => 'b', 'type' => 'number']),
+            PodioItemField::fromAttributes(['field_id' => 3, 'external_id' => 'c', 'type' => 'calculation']),
         ]);
     }
 
@@ -65,14 +66,12 @@ class PodioItemFieldCollectionTest extends TestCase
         $this->assertSame('FooBar', $collection[0]->values);
     }
 
-    public function test_can_add_unknown_type(): void
+    public function test_cannot_add_unknown_type(): void
     {
+        $this->expectException(UnexpectedValueException::class);
         $collection = new PodioItemFieldCollection([
             ['field_id' => 1, 'type' => 'invalid_field_type'],
         ]);
-
-        $this->assertCount(1, $collection);
-        $this->assertInstanceOf(PodioItemField::class, $collection[0]);
     }
 
     public function test_can_add_field(): void

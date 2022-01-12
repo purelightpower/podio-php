@@ -5,7 +5,7 @@ namespace Podio\Tests;
 use PHPUnit\Framework\TestCase;
 use Podio\PodioAppField;
 use Podio\PodioAppFieldCollection;
-use Podio\PodioItemField;
+use Podio\PodioTextItemField;
 use Podio\PodioDataIntegrityError;
 
 class PodioAppFieldCollectionTest extends TestCase
@@ -58,6 +58,6 @@ class PodioAppFieldCollectionTest extends TestCase
     public function test_cannot_add_item_field(): void
     {
         $this->expectException(PodioDataIntegrityError::class);
-        $this->collection[] = new PodioItemField();
+        $this->collection[] = new PodioTextItemField();
     }
 }

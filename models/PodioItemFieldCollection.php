@@ -2,6 +2,8 @@
 
 namespace Podio;
 
+use UnexpectedValueException;
+
 /**
  * Collection for managing a list of PodioItemField objects.
  */
@@ -16,7 +18,7 @@ class PodioItemFieldCollection extends PodioFieldCollection
 
     // Make default array into array of proper objects
         $fields = array();
-        $class_name = PodioItemField::class;
+        $class_name = PodioTextItemField::class;
 
         foreach ($attributes as $field_attributes) {
             $old_class_name = $class_name;
@@ -24,8 +26,10 @@ class PodioItemFieldCollection extends PodioFieldCollection
             if (!is_object($field_attributes)) {
                 $class_name_alternate = __NAMESPACE__ . '\Podio'.ucfirst($field_attributes['type']).'ItemField';
                 if (class_exists($class_name_alternate)) {
-                    $old_class_name = PodioItemField::class;
+                    $old_class_name = PodioTextItemField::class;
                     $class_name = $class_name_alternate;
+                } else {
+                    throw new UnexpectedValueException("There is no field type named {$field_attributes['type']}.");
                 }
             }
 
