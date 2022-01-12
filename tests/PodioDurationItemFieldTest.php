@@ -84,4 +84,8 @@ class PodioDurationItemFieldTest extends TestCase
         $this->assertSame('null', $this->empty_values->as_json());
         $this->assertSame(3723, (int) $this->object->as_json());
     }
+
+    public function testGetValue() {
+        $this->assertEquals(3723, $this->object->getValue());
+    }
 }

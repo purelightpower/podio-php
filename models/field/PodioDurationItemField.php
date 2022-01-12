@@ -51,4 +51,8 @@ class PodioDurationItemField extends PodioItemField
     {
         return $this->values ? $this->values : null;
     }
+
+    public function getValue(): int {
+        return $this->values;
+    }
 }
