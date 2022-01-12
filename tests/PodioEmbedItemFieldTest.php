@@ -136,4 +136,29 @@ class PodioEmbedItemFieldTest extends TestCase
         // Populated values
         $this->assertSame('[{"embed":1,"file":10},{"embed":2,"file":null},{"embed":3,"file":11}]', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $values = $this->object->getValue();
+        $this->assertInstanceOf(PodioCollection::class, $values);
+        $this->assertCount(3, $values);
+        foreach ($values as $value) {
+            $this->assertInstanceOf(PodioEmbed::class, $value);
+            if ($value->files) {
+                foreach ($value->files as $file) {
+                    $this->assertInstanceOf(PodioFile::class, $file);
+                }
+            }
+        }
+    }
+
+    public function testGetValueAsSingular(): void {
+        $object = new PodioEmbedItemField([
+            'field_id' => 123,
+            'values' => ['embed' => ['embed_id' => 4], 'file' => ['file_id' => 12]],
+        ]);
+        $value = $object->getValue();
+        $this->assertInstanceOf(PodioEmbed::class, $value);
+        $this->assertEquals(4, $value->embed_id);
+        $this->assertInstanceOf(PodioFile::class, $value->files->offsetGet(0));
+    }
 }

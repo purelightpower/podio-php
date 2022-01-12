@@ -88,4 +88,12 @@ class PodioEmbedItemField extends PodioItemField
         }
         return $list;
     }
+
+    public function getValue(): PodioCollection|PodioEmbed {
+        $values = $this->values;
+        if (count($values) !== 1) {
+            return $values;
+        }
+        return $values->offsetGet(0);
+    }
 }
