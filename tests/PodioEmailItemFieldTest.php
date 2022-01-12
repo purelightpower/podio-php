@@ -69,4 +69,15 @@ class PodioEmailItemFieldTest extends TestCase
         // Populated values
         $this->assertSame('[{"type":"work","value":"mail@example.com"},{"type":"other","value":"info@example.com"}]', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals(["mail@example.com", "info@example.com"], $this->object->getValue());
+    }
+
+    public function testGetValueSingular(): void {
+        $this->object->values = [
+            ["type" => "home", "value" => "mail@example.com"]
+        ];
+        $this->assertEquals("mail@example.com", $this->object->getValue());
+    }
 }

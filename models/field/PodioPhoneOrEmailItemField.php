@@ -24,4 +24,16 @@ abstract class PodioPhoneOrEmailItemField extends PodioItemField
     {
         return $this->values ? $this->values : array();
     }
+
+    public function getValue(): array|string {
+        $values = $this->values;
+        if (count($values) !== 1) {
+            $cleanedValues = [];
+            foreach ($values as $value) {
+                $cleanedValues[] = $value["value"];
+            }
+            return $cleanedValues;
+        }
+        return $values[0]["value"];
+    }
 }

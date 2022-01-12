@@ -70,4 +70,15 @@ class PodioPhoneItemFieldTest extends TestCase
         // Populated values
         $this->assertSame('[{"type":"work","value":"0123-1233333"},{"type":"other","value":"0232-123123"}]', $this->object->as_json());
     }
+
+    public function testGetValue(): void {
+        $this->assertEquals(["0123-1233333", "0232-123123"], $this->object->getValue());
+    }
+
+    public function testGetValueSingular(): void {
+        $this->object->values = [
+            ["type" => "work", "value" => "0123-1233333"]
+        ];
+        $this->assertEquals("0123-1233333", $this->object->getValue());
+    }
 }
