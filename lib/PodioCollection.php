@@ -59,7 +59,7 @@ class PodioCollection implements IteratorAggregate, ArrayAccess, Countable
     /**
      * Array access. Set item by offset, automatically adding relationship.
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (!is_a($value, PodioObject::class)) {
             throw new PodioDataIntegrityError("Objects in PodioCollection must be of class PodioObject");
@@ -91,7 +91,7 @@ class PodioCollection implements IteratorAggregate, ArrayAccess, Countable
     /**
      * Array access. Check for existence.
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->__items[$offset]);
     }
@@ -99,7 +99,7 @@ class PodioCollection implements IteratorAggregate, ArrayAccess, Countable
     /**
      * Array access. Unset.
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         if (isset($this->__items[$offset])) {
             $item = $this->__items[$offset];
@@ -111,7 +111,7 @@ class PodioCollection implements IteratorAggregate, ArrayAccess, Countable
     /**
      * Array access. Get.
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return isset($this->__items[$offset]) ? $this->__items[$offset] : null;
     }
