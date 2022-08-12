@@ -29,7 +29,7 @@ class PodioAppFieldCollection extends PodioFieldCollection
     /**
      * Array access. Add field to collection.
      */
-    public function offsetSet($offset, $field)
+    public function offsetSet(mixed $offset, mixed $field): void
     {
         if (!is_a($field, PodioAppField::class)) {
             throw new PodioDataIntegrityError("Objects in PodioAppFieldCollection must be of class PodioAppField");

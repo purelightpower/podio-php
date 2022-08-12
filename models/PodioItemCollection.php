@@ -21,7 +21,7 @@ class PodioItemCollection extends PodioCollection
     }
 
     // Array access
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (!is_a($value, PodioItem::class)) {
             throw new PodioDataIntegrityError("Objects in PodioItemCollection must be of class PodioItem");
