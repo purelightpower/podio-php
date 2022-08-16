@@ -67,7 +67,9 @@ class PodioItem extends PodioObject
      */
     public function save($options = array())
     {
-        $json_attributes = $this->as_json_without_readonly_fields();
+
+        //$json_attributes = $this->as_json_without_readonly_fields();
+        $json_attributes = $this->to_payload();
 
         if ($this->id) {
             return self::update($this->id, $json_attributes, $options);
