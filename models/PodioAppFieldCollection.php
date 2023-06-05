@@ -37,4 +37,13 @@ class PodioAppFieldCollection extends PodioFieldCollection
 
         parent::offsetSet($offset, $field);
     }
+
+    public function labelGet(string $label): PodioAppField
+    {
+        $object = parent::labelGet($label);
+        if (is_a($object, PodioAppField::class)) {
+            return $object;
+        }
+        return new PodioAppField($object);
+    }
 }
