@@ -46,4 +46,10 @@ class PodioAppFieldCollection extends PodioFieldCollection
         }
         return new PodioAppField($object);
     }
+
+    public function getExternalIdByLabel(string $label): string
+    {
+        $field = $this->labelGet($label);
+        return $field->external_id;
+    }
 }
