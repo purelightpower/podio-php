@@ -20,9 +20,9 @@ class PodioAppFieldCollectionTest extends TestCase
         parent::setUp();
 
         $this->collection = new PodioAppFieldCollection([
-            new PodioAppField(['field_id' => 1, 'external_id' => 'a', 'type' => 'text']),
-            new PodioAppField(['field_id' => 2, 'external_id' => 'b', 'type' => 'number']),
-            new PodioAppField(['field_id' => 3, 'external_id' => 'c', 'type' => 'calculation']),
+            new PodioAppField(['label' => 'Text Field', 'field_id' => 1, 'external_id' => 'a', 'type' => 'text']),
+            new PodioAppField(['label' => 'Number Field', 'field_id' => 2, 'external_id' => 'b', 'type' => 'number']),
+            new PodioAppField(['label' => 'Calculation Field', 'field_id' => 3, 'external_id' => 'c', 'type' => 'calculation']),
         ]);
     }
 
@@ -59,5 +59,13 @@ class PodioAppFieldCollectionTest extends TestCase
     {
         $this->expectException(PodioDataIntegrityError::class);
         $this->collection[] = new PodioTextItemField();
+    }
+
+    public function test_can_get_by_label(): void
+    {
+        $text = $this->collection->labelGet("Text Field");
+        $this->assertEquals(1, $text->field_id);
+        $calc = $this->collection->labelGet("Calculation Field");
+        $this->assertEquals(3, $calc->field_id);
     }
 }
