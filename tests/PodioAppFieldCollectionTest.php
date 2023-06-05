@@ -68,4 +68,10 @@ class PodioAppFieldCollectionTest extends TestCase
         $calc = $this->collection->labelGet("Calculation Field");
         $this->assertEquals(3, $calc->field_id);
     }
+
+    public function test_can_get_ext_id_by_label(): void
+    {
+        $this->assertEquals("a", $this->collection->getExternalIdByLabel("Text Field"));
+        $this->assertEquals("c", $this->collection->getExternalIdByLabel("Calculation Field"));
+    }
 }
