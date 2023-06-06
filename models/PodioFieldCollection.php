@@ -107,7 +107,7 @@ class PodioFieldCollection extends PodioCollection
                 return $field;
             }
         }
-        throw new PodioNotFoundError("{\"error_description\": \"No field with a label $label was found in the collection.\", \"request\":{}}");
+        throw new \Exception("No field with a label $label was found in the collection");
     }
 
     public function getAllWithLabel(string $label): PodioFieldCollection {
@@ -127,7 +127,7 @@ class PodioFieldCollection extends PodioCollection
                 return $field;
             }
         }
-        throw new PodioNotFoundError("{\"error_description\": \"No field in the collection has a label that matches the regex pattern $regex.\", \"request\":{}}");
+        throw new \Exception("No field in the collection has a label that matches the regex pattern: $regex");
     }
 
     public function getAllWithRegexLabel(string $regex): PodioFieldCollection {
