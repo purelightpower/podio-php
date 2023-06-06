@@ -82,12 +82,15 @@ class PodioContactItemField extends PodioItemField
         return $list;
     }
 
-    public function getValue(): PodioCollection|PodioContact {
+    public function getValue(): PodioCollection|PodioContact|null {
         $values = $this->values;
-        if (count($values) !== 1) {
-            return $values;
-        } else {
-            return $values->offsetGet(0);
+        if ($values) {
+            if (count($values) !== 1) {
+                return $values;
+            } else {
+                return $values->offsetGet(0);
+            }
         }
+        return null;
     }
 }
