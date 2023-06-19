@@ -88,7 +88,7 @@
                 if (in_array($this->config["type"], [self::USER_TYPE, self::APP_TYPE])) {
                     $this->type = $this->config["type"];
                 } else {
-                    throw new \Exception("The Podio Authenticator does not support ${$this->config['type']} authentication. Only \"app\" and \"user\" authentication types are supported.");
+                    throw new \Exception("The Podio Authenticator does not support {${$this->config['type']}} authentication. Only \"app\" and \"user\" authentication types are supported.");
                 }
             } else {
                 throw new \Exception("No authentication type was provided in the Podio config file.");
