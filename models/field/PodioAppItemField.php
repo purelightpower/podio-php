@@ -83,7 +83,7 @@ class PodioAppItemField extends PodioItemField
     }
 
     public function getValue(): PodioItem|PodioItemCollection {
-        $total = $this->values->count();
+        $total = $this->countItems();
         if ($this->hasMultiple() && $total > 1) {
             return new PodioItemCollection($this->values->_get_items());
         } else if ($total > 0) {
@@ -91,5 +91,12 @@ class PodioAppItemField extends PodioItemField
         } else {
             return new PodioItemCollection([]);
         }
+    }
+
+    private function countItems(): int {
+        if (!is_null($this->values)) {
+            return $this->values->count();
+        }
+        return 0;
     }
 }
