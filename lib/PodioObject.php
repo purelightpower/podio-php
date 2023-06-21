@@ -190,7 +190,7 @@ class PodioObject
     public static function listing($response_or_attributes)
     {
         if ($response_or_attributes) {
-            if (is_object($response_or_attributes) && get_class($response_or_attributes) == 'PodioResponse') {
+            if (is_object($response_or_attributes) && get_class($response_or_attributes) == 'Podio\PodioResponse') {
                 $body = $response_or_attributes->json_body();
             } else {
                 $body = $response_or_attributes;
