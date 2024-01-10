@@ -21,4 +21,8 @@ class PodioTagItemField extends PodioItemField
             return $value['value'];
         }, $this->values));
     }
+
+    public function getValue(): array {
+        return explode(";", $this->humanized_value());
+    }
 }
