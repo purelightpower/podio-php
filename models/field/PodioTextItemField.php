@@ -37,7 +37,10 @@ class PodioTextItemField extends PodioItemField
 
     public function humanized_value()
     {
-        return strip_tags($this->values);
+        if ($this->values) {
+            return strip_tags($this->values);
+        }
+        return '';
     }
 
     public function api_friendly_values()
